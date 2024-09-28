@@ -18,15 +18,17 @@ Sigue estos pasos para configurar el proyecto Django en tu entorno local:
 
 Clona el repositorio a tu máquina local usando Git:
 
-
+```bash
 git clone https://github.com/joaccco/blog.git
 cd blog
+```
 
 ### 2. Crear un Entorno Virtual
 Es recomendable usar un entorno virtual para aislar las dependencias del proyecto y evitar conflictos con otras instalaciones de Python. Para crear el entorno virtual:
 bash
-Copiar código
+
 python3 -m venv venv
+
 
 ### 3. Activar el Entorno Virtual
 Una vez que hayas creado el entorno virtual, necesitarás activarlo para instalar y gestionar las dependencias del proyecto dentro de este entorno. El comando para activar el entorno virtual depende del sistema operativo que estés utilizando:
