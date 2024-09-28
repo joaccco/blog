@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globales */
+body {
+  @apply bg-gray-100 text-gray-900; /* Aplicar un fondo y texto predeterminado */
+  font-family: 'Arial', sans-serif; /* O elige tu fuente preferida */
+}
+
+h1 {
+  @apply text-2xl font-bold; /* Tamaño y negrita para encabezados */
+}
+
+h2 {
+  @apply text-xl font-semibold; /* Tamaño y estilo para subtítulos */
+}
+
+p {
+  @apply mt-2 text-base; /* Margen y tamaño de fuente para párrafos */
+}
+
+/* Puedes añadir más estilos personalizados según sea necesario */
