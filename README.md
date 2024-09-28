@@ -69,6 +69,7 @@ pip install django
 Una vez activado el entorno virtual y las dependencias instaladas, puedes continuar con los siguientes pasos para configurar y ejecutar tu proyecto Django. Asegúrate de aplicar las migraciones, crear un superusuario (si es necesario) y ejecutar el servidor de desarrollo.
 
 ###Estructura del projecto
+
 blog/
 │
 ├── blog/               # Directorio del proyecto Django
