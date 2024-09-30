@@ -3,7 +3,6 @@
 /* import { useEffect } from 'react'; */
 import localFont from "next/font/local";
 import "../styles/globals.css";
-import 'alpinejs';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 

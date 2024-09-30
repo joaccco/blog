@@ -1,6 +1,4 @@
 
-import "../styles/globals.css";
-
 const Home = () => {
   return (
     <div>
@@ -10,7 +8,7 @@ const Home = () => {
           <div className="flex flex-col items-center justify-center h-10 bg-red-300">
             <h1 className="text-4xl font-bold">Contacto</h1>
             <p className="mt-4 text-lg">Si tienes alguna pregunta, no dudes en contactarme.</p>
-            hola hola
+            hola holadonde
           </div>
         </main>
       </div>
