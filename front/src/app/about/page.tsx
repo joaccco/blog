@@ -1,8 +1,7 @@
-import Layout from '../app/page'; // Asegúrate de importar el layout correcto
 
-const Contacto = () => {
+const About = () => {
   return (
-    <Layout>
+    <div>
       {/* Este contenido se renderizará dentro del layout */}
       <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
         {/* <img
@@ -69,8 +68,8 @@ const Contacto = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
-export default Contacto;
+export default About;
