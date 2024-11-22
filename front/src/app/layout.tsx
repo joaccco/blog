@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "../styles/globals.css";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Stars from '../components/Stars';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,6 +36,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
+        <div style={{ backgroundColor: 'black', position: 'relative', height: '100vh', overflow: 'hidden' }}>
+          <Stars />
+        </div>
         {children} {/* Este es el lugar donde se renderizan las páginas hijas */}
 
         <Footer />
