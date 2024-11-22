@@ -29,7 +29,7 @@ const Navbar = () => {
                 Nosotros
               </Link>
               <Link
-                href="/categorias"
+                href="/proyects"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Proyectos
@@ -41,7 +41,7 @@ const Navbar = () => {
                 Nosotros
               </Link>
               <Link
-                href="/contacto"
+                href="/contact"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Contacto

@@ -1,21 +1,19 @@
-'use client';
-
-/* import { useEffect } from 'react'; */
-import localFont from "next/font/local";
+"use client";
 import "../styles/globals.css";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { genos } from "@/config/fonts";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export default function RootLayout({
   children,
@@ -33,10 +31,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={genos.className}>
         <Navbar />
-        {children} {/* Este es el lugar donde se renderizan las páginas hijas */}
-
+        {children}{" "}
+        {/* Este es el lugar donde se renderizan las páginas hijas */}
         <Footer />
       </body>
     </html>
