@@ -1,5 +1,5 @@
 // components/Stars.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Stars = () => {
   const [stars, setStars] = useState([]);
@@ -21,25 +21,25 @@ const Stars = () => {
     };
 
     generateStars();
-    window.addEventListener('resize', generateStars);
+    window.addEventListener("resize", generateStars);
 
-    return () => window.removeEventListener('resize', generateStars);
+    return () => window.removeEventListener("resize", generateStars);
   }, []);
 
   return (
-    <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
-      {stars.map(star => (
+    <div style={{ position: "absolute", width: "100%", height: "100%" }}>
+      {stars.map((star) => (
         <div
           key={star.id}
           style={{
-            position: 'absolute',
+            position: "relative",
             left: `${star.x}px`,
             top: `${star.y}px`,
             width: `${star.size}px`,
             height: `${star.size}px`,
-            backgroundColor: '#fff',
-            borderRadius: '50%',
-            boxShadow: `0 0 ${star.size * 2}px #fff`
+            backgroundColor: "#fff",
+            borderRadius: "50%",
+            boxShadow: `0 0 ${star.size * 2}px #fff`,
           }}
         />
       ))}

@@ -40,6 +40,7 @@ export default function RootLayout({
             position: "relative",
             height: "100vh",
             overflow: "hidden",
+            zIndex: 2,
           }}
         >
           <Stars />
