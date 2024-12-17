@@ -1,7 +1,7 @@
 
 const About = () => {
   return (
-    <div className="absolute">
+    <div className="">
       {/* Este contenido se renderizará dentro del layout */}
       <div className="relative isolate overflow-hidden bg-transparent py-24 sm:py-32">
         {/* <img

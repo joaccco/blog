@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-black text-white">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-transparent absolute z-50 text-white">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"

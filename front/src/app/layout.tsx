@@ -40,12 +40,14 @@ export default function RootLayout({
             position: "relative",
             height: "100vh",
             overflow: "hidden",
+            zIndex: "10",
           }}
         >
           <Stars />
         </div>
-        {children}{" "}
-        {/* Este es el lugar donde se renderizan las páginas hijas */}
+        <div className="z-50 h-screen absolute">
+          {children}{" "}
+        </div>
         <Footer />
       </body>
     </html>
