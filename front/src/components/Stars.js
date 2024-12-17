@@ -21,9 +21,9 @@ const Stars = () => {
     };
 
     generateStars();
-    window.addEventListener('resize', generateStars);
+    window.addEventListener("resize", generateStars);
 
-    return () => window.removeEventListener('resize', generateStars);
+    return () => window.removeEventListener("resize", generateStars);
   }, []);
 
   useEffect(() => {
@@ -47,19 +47,19 @@ const Stars = () => {
   }, []);
 
   return (
-    <div style={{ position: 'absolute', width: '100%', height: '100%', overflow: 'hidden' }}>
-      {stars.map((star) => (
+    <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+      {stars.map(star => (
         <div
           key={star.id}
           style={{
-            position: 'absolute',
+            position: "relative",
             left: `${star.x}px`,
             top: `${star.y}px`,
             width: `${star.size}px`,
             height: `${star.size}px`,
             backgroundColor: '#fff',
             borderRadius: '50%',
-            boxShadow: `0 0 ${star.size * 2}px #fff`, // Brillo de las estrellas
+            boxShadow: `0 0 ${star.size * 2}px #fff`
           }}
         />
       ))}

@@ -23,11 +23,6 @@ const Home = () => {
         <button className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-full text-lg hover:bg-blue-700 transition">
           Start
         </button>
-
-        {/* Technologies Used (Laravel, Threejs, etc.) */}
-        <div className="absolute top-4 right-4 text-purple-400 text-sm">
-          {`{ Laravel, Threejs, Tailwind, OAuth }`}
-        </div>
       </main>
     </div>
   );
