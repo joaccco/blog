@@ -21,3 +21,25 @@ p {
 }
 
 /* Puedes añadir más estilos personalizados según sea necesario */
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  25% {
+    transform: translateX(10%) scale(1.1);
+  }
+  50% {
+    transform: translateX(20%) scale(1.2);
+  }
+  75% {
+    transform: translateX(10%) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-wave {
+  animation: wave 10s infinite ease-in-out;
+}
