@@ -1,20 +1,36 @@
-import Link from "next/link";
-import Image from 'next/image';
-import { Button } from "@/components/ui/button";
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
 import ServicesSection from '../components/ServicesSection'
-import { ArrowRight, Mail, Phone, Calendar } from 'lucide-react';
+import { ArrowRight, Mail, Phone, Calendar } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const Earth3DScene = dynamic(() => import('@/components/Earth3DScene'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gray-900" />
+})
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen overflow-y-auto snap-y snap-mandatory">
       <BackgroundGradients />
-
-      <Section1 />
+      <Section1 scrollY={scrollY} />
       <ServicesSection />
       <Section3 />
       <Section4 />
     </div>
-  );
+  )
 }
 
 function BackgroundGradients() {
@@ -48,9 +64,9 @@ function BackgroundGradients() {
   );
 }
 
-function Section1() {
+function Section1({ scrollY }: { scrollY: number }) {
   return (
-    <section className="relative flex flex-col min-h-screen items-center justify-center snap-center">
+    <section className="relative flex flex-col min-h-screen items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
@@ -58,22 +74,17 @@ function Section1() {
           filter: "brightness(0.4)",
         }}
       />
-      <main className="relative z-10 flex flex-col items-center gap-8 text-center text-white p-4">
+      <div className="absolute inset-0 z-10">
+        <Earth3DScene scrollY={scrollY} />
+      </div>
+      <main className="relative z-20 flex flex-col items-center gap-8 text-center text-white p-4">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">We Are Ethereal Devs</h1>
         <p className="text-xl sm:text-2xl font-semibold">
           Web Solutions and Web Applications
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button asChild size="lg">
-            <Link href="/login">Iniciar Sesión</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/form">Start</Link>
-          </Button>
-        </div>
       </main>
     </section>
-  );
+  )
 }
 
 function Section3() {
@@ -81,7 +92,7 @@ function Section3() {
     {
       title: "E-commerce Plataforma",
       description: "Desarrollo de una plataforma de comercio electrónico con características personalizadas.",
-      image: "../img/ecommerce.jpg",
+      image: "/placeholder.svg?height=300&width=500&text=Web+App",
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
     },
     {
