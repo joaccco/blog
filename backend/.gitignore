@@ -1,0 +1,76 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.log
+*.bak
+*.swp
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.pyc
+*.pyo
+*.pot
+*.mo
+
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Static files
+/static/
+/media/
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+.idea/
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+
+# Test and temporary files
+*.db-journal
+*.log
+*.bak
+
+# MySQL
+*.sql
+
+# Secrets
+*.env
+.env*
+
+# Django Docker settings
+docker-compose.override.yml
+*.env
+
+# Redis
+*.pid
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db

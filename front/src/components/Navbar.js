@@ -1,117 +1,109 @@
+'use client'
+
+import { useState, useEffect } from 'react';
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Code, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: 'Inicio', href: '/' },
+    { name: 'Servicios', href: '/services' },
+    { name: 'Proyectos', href: '/projects' },
+    { name: 'Tecnologías', href: '/technologies' },
+    { name: 'Nosotros', href: '/about' },
+    { name: 'Contacto', href: '/contact' },
+  ];
+
   return (
-    <nav className="bg-black">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'}`}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
-            <Link
-              href="/"
-              className="text-white text-lg font-bold hover:text-gray-300"
-            >
-              Mi Blog
+            <Link href="/" className="flex items-center space-x-2">
+              <Code className="h-8 w-8 text-purple-500" />
+              <span className="text-white text-xl font-bold">Ethereal Devs</span>
             </Link>
           </div>
-          <div className="hidden sm:block">
-            <div className="flex space-x-4">
-              <Link
-                href="/"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                aria-current="page"
-              >
-                Inicio
-              </Link>
-              <Link
-                href="/us"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Nosotros
-              </Link>
-              <Link
-                href="/proyects"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Proyectos
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Nosotros
-              </Link>
-              <Link
-                href="/contact"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Contacto
-              </Link>
-            </div>
-          </div>
-          <div className="flex items-end">
-            <div className="rounded-full px-4 py-2 flex w-full bg-gradient-to-r from-slate-500 to-purple-100">
-              <div className="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 512 512"
+          <div className="hidden md:block">
+            <div className="flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-300 hover:bg-purple-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
                 >
-                  <path
-                    fill="currentColor"
-                    d="m478.33 433.6l-90-218a22 22 0 0 0-40.67 0l-90 218a22 22 0 1 0 40.67 16.79L316.66 406h102.67l18.33 44.39A22 22 0 0 0 458 464a22 22 0 0 0 20.32-30.4ZM334.83 362L368 281.65L401.17 362Zm-66.99-19.08a22 22 0 0 0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73c39.65-53.68 62.11-114.75 71.27-143.49H330a22 22 0 0 0 0-44H214V70a22 22 0 0 0-44 0v20H54a22 22 0 0 0 0 44h197.25c-9.52 26.95-27.05 69.5-53.79 108.36c-31.41-41.68-43.08-68.65-43.17-68.87a22 22 0 0 0-40.58 17c.58 1.38 14.55 34.23 52.86 83.93c.92 1.19 1.83 2.35 2.74 3.51c-39.24 44.35-77.74 71.86-93.85 80.74a22 22 0 1 0 21.07 38.63c2.16-1.18 48.6-26.89 101.63-85.59c22.52 24.08 38 35.44 38.93 36.1a22 22 0 0 0 30.75-4.9Z"
-                  />
-                </svg>
-              </div>
-
-              <div className="">
-                <button className="inline-flex items-center justify-center font-sans font-semibold tracking-wide text-black px-2">
-                  <Link href="/form">Start</Link>
-                </button>
-              </div>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center">
+            <motion.div
+              className="hidden md:block"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href="/start-project" className="bg-purple-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-600 transition-colors duration-300">
+                Iniciar Proyecto
+              </Link>
+            </motion.div>
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Menú móvil */}
-      <div className="sm:hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
+      {/* Mobile menu */}
+      <motion.div
+        className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90 backdrop-blur-md">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-gray-300 hover:bg-purple-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
+            >
+              {item.name}
+            </Link>
+          ))}
           <Link
-            href="/"
-            className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-            aria-current="page"
+            href="/start-project"
+            className="bg-[#1a1257] text-white block px-3 py-2 rounded-full text-base font-medium hover:bg-purple-600 transition-colors duration-300 mt-4"
           >
-            Inicio
-          </Link>
-          <Link
-            href="/articulos"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Artículos
-          </Link>
-          <Link
-            href="/categorias"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Categorías
-          </Link>
-          <Link
-            href="/sobre-mi"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Sobre Mí
-          </Link>
-          <Link
-            href="/contacto"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Contacto
+            Iniciar Proyecto
           </Link>
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 };
 
 export default Navbar;
+
