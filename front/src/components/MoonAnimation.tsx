@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import nightEarth from '../img/nightearth.jpg'
+import moon from '../img/moon.jpg'
 
-const EarthAnimation: React.FC = () => {
+const MoonAnimation: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const EarthAnimation: React.FC = () => {
   return (
     <div ref={containerRef} className="absolute inset-0 z-10 overflow-hidden">
       <svg
-        className="absolute top-0 left-1/4 transform -translate-x-3/4 h-full w-auto min-w-[1200px]"
+        className="absolute top-0 right-1/4 transform translate-x-3/4 h-full w-auto min-w-[1200px]"
         viewBox="0 0 1200 800"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,28 +33,29 @@ const EarthAnimation: React.FC = () => {
         <defs>
           <radialGradient id="atmosphere-glow" cx="0.5" cy="0.5" r="0.5">
             <stop offset="80%" stopColor="#000B3B" stopOpacity="0" />
-            <stop offset="95%" stopColor="#0047AB" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#4169E1" stopOpacity="0.6" />
           </radialGradient>
 
-          {/* Mask for the Earth image */}
           <mask id="earth-mask">
             <circle cx="600" cy="400" r="250" fill="white" />
           </mask>
 
-          {/* Pattern for the Earth image */}
           <pattern id="earth-pattern" patternUnits="userSpaceOnUse" width="500" height="500" x="350" y="150">
             <image
-              href={nightEarth.src}
+              href={moon.src}
               width="500"
               height="500"
               className="earth-rotation"
               preserveAspectRatio="xMidYMid slice"
             />
           </pattern>
+
+          {/* Sombra para el lado oscuro */}
+          <linearGradient id="shadow-gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="black" stopOpacity="0" />
+            <stop offset="100%" stopColor="black" stopOpacity="0.7" />
+          </linearGradient>
         </defs>
 
-        {/* Background stars */}
         <g className="stars">
           {Array.from({ length: 200 }).map((_, i) => (
             <circle
@@ -76,10 +77,8 @@ const EarthAnimation: React.FC = () => {
         </g>
 
         <g className="earth-rotation">
-          {/* Earth image */}
           <circle cx="600" cy="400" r="250" fill="url(#earth-pattern)" mask="url(#earth-mask)" />
-          
-          {/* Atmospheric glow */}
+          <circle cx="600" cy="400" r="250" fill="url(#shadow-gradient)" />
           <circle cx="600" cy="400" r="260" fill="url(#atmosphere-glow)" />
 
           <animateTransform
@@ -97,5 +96,4 @@ const EarthAnimation: React.FC = () => {
   )
 }
 
-export default EarthAnimation
-
+export default MoonAnimation

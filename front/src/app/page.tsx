@@ -7,6 +7,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react'
 import ServicesSection from "../components/ServicesSection";
 import { Mail, Phone, Calendar } from "lucide-react";
 import EarthAnimation from '../components/EarthAnimation'
+import MoonAnimation from '../components/MoonAnimation'
 
 export default function Home() {
 
@@ -14,7 +15,11 @@ export default function Home() {
     <div className="min-h-screen overflow-y-auto snap-y snap-mandatory">
       <BackgroundGradients />
       <Section1 />
-      <ServicesSection />
+
+      <div className="my-24">
+        <ServicesSection />
+      </div>
+
       <Section3 />
       <Section4 />
     </div>
@@ -69,7 +74,7 @@ function Section1() {
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight">
             Soluciones digitales
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-purple-200 to-indigo-300 bg-clip-text text-transparent">
               para el futuro
             </span>
           </h1>
@@ -83,21 +88,21 @@ function Section1() {
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-gray-100 rounded-full px-8 font-medium"
+              className="w-full bg-indigo-100 text-indigo-900 font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
               asChild
             >
               <Link href="/contact">
-                INICIAR PROYECTO <ArrowRight className="ml-2 h-4 w-4" />
+                Iniciar <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full px-8 border-white/20 hover:bg-white/10"
+              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
               asChild
             >
               <Link href="/projects">
-                VER PROYECTOS <ChevronDown className="ml-2 h-4 w-4" />
+                Ver Proyectos <ChevronDown className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -139,25 +144,7 @@ function Section1() {
         </div>
       </div>
 
-      {/* Bottom Decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
-        <div className="relative h-[100px] w-full">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-white/20 rounded-full"
-              style={{
-                width: '2px',
-                height: '2px',
-                left: `${(i / 40) * 100}%`,
-                bottom: `${Math.sin(i / 2) * 20 + 20}px`,
-                opacity: 0.5 + Math.sin(i / 4) * 0.5,
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      <MoonAnimation />
     </section>
   )
 }
@@ -200,7 +187,7 @@ function Section3() {
         }}
       />
       <main className="relative z-10 text-center text-white p-6 w-full max-w-7xl">
-        <h2 className="text-5xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-purple-100">
+        <h2 className="text-5xl sm:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-purple-100">
           Proyectos Que Inspiran
         </h2>
         <p className="text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
@@ -211,7 +198,7 @@ function Section3() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-gray-800 backdrop-blur-xl p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 overflow-hidden"
+              className="group bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 overflow-hidden"
             >
               <div className="relative overflow-hidden rounded-xl mb-6">
                 <Image
@@ -223,7 +210,7 @@ function Section3() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <h3 className="text-2xl font-semibold mb-3 group-hover:text-purple-400 transition duration-300">
+              <h3 className="text-2xl font-semibold mb-3 group-hover:text-violet-200 transition duration-300">
                 {project.title}
               </h3>
               <p className="text-gray-400 mb-4 group-hover:text-white transition duration-300">
@@ -233,7 +220,7 @@ function Section3() {
                 {project.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded-full"
+                    className="bg-indigo-500/20 text-indigo-300 text-xs px-2 py-1 rounded-full"
                   >
                     {tag}
                   </span>
@@ -246,7 +233,7 @@ function Section3() {
           <Button
             asChild
             size="lg"
-            className="bg-purple-600 hover:bg-purple-700 text-white"
+            className="bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
           >
             <Link href="/proyects">Ver Todos los Proyectos</Link>
           </Button>
@@ -266,10 +253,9 @@ function Section4() {
             'url("/placeholder.svg?height=1080&width=1920&text=Abstract+Tech+Background")',
         }}
       />
-      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-black opacity-55 via-[#0c0638] to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-black via-[#0c0638] to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[200px] bg-transparent"></div>
       <main className="relative z-10 text-center text-white p-6 w-full max-w-6xl">
-        <h2 className="text-5xl sm:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+        <h2 className="text-5xl mt-24 sm:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-purple-100">
           Hagamos Realidad Tu Visión Digital
         </h2>
         <p className="text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
@@ -279,7 +265,7 @@ function Section4() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl hover:bg-white/20 transition duration-300">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
             <Mail className="w-12 h-12 text-blue-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Contáctanos</h3>
             <p className="text-gray-300 mb-4">
@@ -288,32 +274,32 @@ function Section4() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
             >
-              <Link href="/contact">
-                Enviar Mensaje <ArrowRight className="ml-2 h-4 w-4" />
+              <Link className="flex" href="/contact">
+                Contactar <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl hover:bg-white/20 transition duration-300">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
             <Phone className="w-12 h-12 text-purple-400 mb-4 mx-auto" />
-            <h3 className="text-2xl font-semibold mb-2">Llámanos</h3>
+            <h3 className="text-2xl font-semibold mb-2">Hablanos al Whatsapp</h3>
             <p className="text-gray-300 mb-4">
               Habla directamente con uno de nuestros expertos en desarrollo.
             </p>
             <Button
               asChild
               size="lg"
-              className="w-full bg-purple-600 hover:bg-purple-700"
+              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
             >
-              <a href="tel:+123456789">
-                Llamar Ahora <ArrowRight className="ml-2 h-4 w-4" />
+              <a className="flex" href="tel:+123456789">
+                Ir a Whatsapp<ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl hover:bg-white/20 transition duration-300">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
             <Calendar className="w-12 h-12 text-pink-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Agenda una Cita</h3>
             <p className="text-gray-300 mb-4">
@@ -322,9 +308,9 @@ function Section4() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-pink-600 hover:bg-pink-700"
+              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
             >
-              <Link href="/schedule">
+              <Link className="flex " href="/schedule">
                 Agendar Cita <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

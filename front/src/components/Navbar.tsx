@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Code, Menu, X, User } from 'lucide-react'
+import { Code, X, User, Globe } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 
 const navItems = [
   { name: 'Inicio', href: '/' },
@@ -15,7 +16,7 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false) // Simulated auth state
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   useEffect(() => {
@@ -61,8 +62,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'
-        }`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex h-20 items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
@@ -70,16 +70,17 @@ export default function Navbar() {
               <span className="text-white text-xl font-bold">Ethereal</span>
             </Link>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               {isAuthenticated ? (
                 <div className="relative">
-                  <button
+                  <Button
                     onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="relative h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center"
+                    variant="ghost"
+                    className="relative h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-0"
                     aria-label="User menu"
                   >
                     <User className="h-5 w-5 text-white" />
-                  </button>
+                  </Button>
                   {showUserMenu && (
                     <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                       <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
@@ -91,21 +92,29 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <button
+                <Button
                   onClick={() => setIsAuthenticated(true)}
-                  className="text-white hover:text-gray-300 transition-colors"
+                  variant="secondary"
+                  className="rounded-full bg-gray-200 text-gray-900 hover:bg-gray-300"
                 >
-                  Iniciar Sesión
-                </button>
+                  LogIn
+                </Button>
               )}
 
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-white focus:outline-none"
-                aria-label="Toggle menu"
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-gray-200 text-gray-900 hover:bg-gray-300"
               >
-                <p>Menu</p>
-              </button>
+                <Globe className="h-5 w-5" />
+              </Button>
+
+              <Button
+                onClick={() => setIsOpen(!isOpen)}
+                className="rounded-full bg-gray-100 text-black hover:shadow-emerald-500 hover:border-purple-600 border"
+              >
+                Menú
+              </Button>
             </div>
           </div>
         </div>
