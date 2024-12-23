@@ -72,8 +72,8 @@ export default function ServicesSection() {
         transition={{ duration: 0.6 }}
         className="text-7xl m-24 font-bold text-white mb-10 px-4 sm:px-6"
       >
-        Nuestros 
-        <span className="text-gray-500"> Servicios</span>
+        Nuestros
+        <span className="text-gray-400"> Servicios</span>
       </motion.h2>
 
       {/* Contenedor fijo */}
