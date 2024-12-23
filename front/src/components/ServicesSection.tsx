@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Button } from "@/components/ui/button"
+import { useRef } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const services = [
   {
@@ -55,62 +55,78 @@ const services = [
     ],
     image: "/placeholder.svg?height=300&width=400&text=Ecommerce"
   }
-]
+];
 
 export default function ServicesSection() {
-  const [selectedService, setSelectedService] = useState(services[0])
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
   return (
-    <section className="relative bg-transparent flex flex-col min-h-screen items-center justify-center snap-center bg-black">
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/placeholder.svg?height=1080&width=1920&text=Space+Background")',
-          filter: "brightness(0.4)",
-        }}
-      />
-      <main className="relative z-10 text-center text-white p-6 w-full max-w-6xl">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-6">¿Qué Ofrecemos?</h2>
+    <section className="relative bg-[#111] min-h-screen overflow-hidden">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-7xl m-24 font-bold text-white mb-10 px-4 sm:px-6"
+      >
+        Nuestros 
+        <span className="text-gray-500"> Servicios</span>
+      </motion.h2>
 
-        <div className="backdrop-blur-lg bg-black bg-opacity-50 rounded-2xl p-6 shadow-xl">
-          <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-            {services.map((service) => (
-              <Button
-                key={service.name}
-                onClick={() => setSelectedService(service)}
-                variant={selectedService.name === service.name ? "secondary" : "ghost"}
-                className="text-sm sm:text-base"
-              >
-                {service.name}
-              </Button>
-            ))}
-          </nav>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="text-left">
-              <h3 className="text-2xl font-semibold mb-4">{selectedService.name}</h3>
-              <p className="text-lg leading-relaxed mb-4">
-                {selectedService.description}
-              </p>
-              <ul className="list-disc ml-5">
-                {selectedService.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="hidden md:block">
-              <Image
-                src={selectedService.image}
-                alt={`${selectedService.name} ilustración`}
-                width={400}
-                height={300}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
+      {/* Contenedor fijo */}
+      <div className="relative flex justify-center">
+        <div
+          ref={containerRef}
+          className="sticky bg-[#1a1a1a] rounded-xl p-6 w-full max-w-5xl h-[80vh] overflow-y-scroll shadow-lg"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={service.name}
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              className="mb-12 bg-[#222] rounded-lg p-8 shadow-md"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    {service.name}
+                  </h3>
+                  <p className="text-gray-400 text-lg mb-6">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li
+                        key={featureIndex}
+                        className="text-gray-500 flex items-center"
+                      >
+                        <span className="w-2 h-2 bg-gray-500 rounded-full mr-3" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="hidden md:block">
+                  <Image
+                    src={service.image}
+                    alt={service.name}
+                    width={400}
+                    height={300}
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </main>
+      </div>
     </section>
-  )
+  );
 }
-
