@@ -164,7 +164,7 @@ function Section3() {
             size="lg"
             className="bg-purple-600 hover:bg-purple-700 text-white"
           >
-            <Link href="/projects">Ver Todos los Proyectos</Link>
+            <Link href="/proyects">Ver Todos los Proyectos</Link>
           </Button>
         </div>
       </main>
