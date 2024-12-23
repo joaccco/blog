@@ -110,7 +110,7 @@ function Section3() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-black to-zinc-900 flex flex-col min-h-screen items-center justify-center snap-center overflow-hidden">
+    <section className="relative bg-transparent flex flex-col min-h-screen items-center justify-center snap-center overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center opacity-10"
         style={{
@@ -168,7 +168,7 @@ function Section4() {
           backgroundImage: 'url("/placeholder.svg?height=1080&width=1920&text=Abstract+Tech+Background")',
         }}
       />
-      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-black opacity-75 via-[#0c0638] to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-black opacity-55 via-[#0c0638] to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-black via-[#0c0638] to-transparent"></div>
       <main className="relative z-10 text-center text-white p-6 w-full max-w-6xl">
         <h2 className="text-5xl sm:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">

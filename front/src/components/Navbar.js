@@ -25,6 +25,7 @@ const Navbar = () => {
     { name: 'Tecnologías', href: '/technologies' },
     { name: 'Nosotros', href: '/about' },
     { name: 'Contacto', href: '/contact' },
+    { name: 'Proceso', href: '/process' },
   ];
 
   return (
