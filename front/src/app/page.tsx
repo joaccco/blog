@@ -3,14 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, ArrowRight } from 'lucide-react'
 import ServicesSection from "../components/ServicesSection";
-import { ArrowRight, Mail, Phone, Calendar } from "lucide-react";
-/* import dynamic from "next/dynamic"; */
-
-/* const Earth3DScene = dynamic(() => import("@/components/Earth3DScene"), {
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-gray-900" />,
-}); */
+import { Mail, Phone, Calendar } from "lucide-react";
+import EarthAnimation from '../components/EarthAnimation'
 
 export default function Home() {
 
@@ -58,28 +54,116 @@ function BackgroundGradients() {
 
 function Section1() {
   return (
-    <section className="relative flex flex-col min-h-screen items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("/placeholder.svg?height=1080&width=1920")',
-          filter: "brightness(0.4)",
-        }}
-      />
-      <div className="absolute inset-0 z-10">
-        {/*    <Earth3DScene scrollY={scrollY} /> */}
+    <section className="relative flex flex-col min-h-screen items-center justify-center overflow-hidden bg-transparent text-white">
+      {/* Space Illustration */}
+      <EarthAnimation />
+
+      <div className="container relative z-20 mx-auto px-4">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 mb-8 backdrop-blur-sm border border-white/20">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-sm font-medium">Status: DISPONIBLE PARA PROYECTOS</span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight">
+            Soluciones digitales
+            <span className="block bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              para el futuro
+            </span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl">
+            Creamos experiencias web innovadoras y aplicaciones personalizadas que transforman tu visión en realidad.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <Button
+              size="lg"
+              className="bg-white text-black hover:bg-gray-100 rounded-full px-8 font-medium"
+              asChild
+            >
+              <Link href="/contact">
+                INICIAR PROYECTO <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full px-8 border-white/20 hover:bg-white/10"
+              asChild
+            >
+              <Link href="/projects">
+                VER PROYECTOS <ChevronDown className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="w-full max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
+            {[
+              { number: "50+", label: "Proyectos Completados" },
+              { number: "98%", label: "Clientes Satisfechos" },
+              { number: "5+", label: "Años de Experiencia" },
+              { number: "24/7", label: "Soporte Técnico" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Clients Grid */}
+          <div className="mt-16 w-full">
+            <p className="text-sm text-gray-400 mb-6">EMPRESAS QUE CONFÍAN EN NOSOTROS</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-32 h-12 bg-white/5 rounded-lg flex items-center justify-center">
+                  <Image
+                    src={`/placeholder.svg?height=30&width=80&text=Client+${i}`}
+                    alt={`Client ${i}`}
+                    width={80}
+                    height={30}
+                    className="opacity-50 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <main className="relative z-20 flex flex-col items-center gap-8 text-center text-white p-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-          We Are Ethereal Devs
-        </h1>
-        <p className="text-xl sm:text-2xl font-semibold">
-          Web Solutions and Web Applications
-        </p>
-      </main>
+
+      {/* Bottom Decoration */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
+        <div className="relative h-[100px] w-full">
+          {Array.from({ length: 40 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute bg-white/20 rounded-full"
+              style={{
+                width: '2px',
+                height: '2px',
+                left: `${(i / 40) * 100}%`,
+                bottom: `${Math.sin(i / 2) * 20 + 20}px`,
+                opacity: 0.5 + Math.sin(i / 4) * 0.5,
+              }}
+            />
+          ))}
+        </div>
+      </div>
     </section>
-  );
+  )
 }
+
+
+
 
 function Section3() {
   const projects = [
