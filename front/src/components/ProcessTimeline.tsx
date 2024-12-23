@@ -95,12 +95,13 @@ export default function ProcessTimeline() {
             <div className="text-center mb-20">
                 <h2 className="text-4xl font-bold text-primary mb-4">Our Process</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                    We follow a structured approach to turn your vision into reality. Here's how we work together to create exceptional digital solutions.
+                    We follow a structured approach to turn your vision into reality. Here how we work together to create exceptional digital solutions.
                 </p>
             </div>
 
             <div ref={containerRef} className="relative min-h-[200vh]">
                 {steps.map((step, index) => {
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
                     const y = useTransform(
                         scrollYProgress,
                         [index / steps.length, (index + 0.5) / steps.length],

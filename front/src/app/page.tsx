@@ -1,31 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ServicesSection from "../components/ServicesSection";
 import { ArrowRight, Mail, Phone, Calendar } from "lucide-react";
-import dynamic from "next/dynamic";
+/* import dynamic from "next/dynamic"; */
 
-const Earth3DScene = dynamic(() => import("@/components/Earth3DScene"), {
+/* const Earth3DScene = dynamic(() => import("@/components/Earth3DScene"), {
   ssr: false,
   loading: () => <div className="w-full h-full bg-gray-900" />,
-});
+}); */
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen overflow-y-auto snap-y snap-mandatory">
       <BackgroundGradients />
-      <Section1 scrollY={scrollY} />
+      <Section1 />
       <ServicesSection />
       <Section3 />
       <Section4 />
@@ -35,7 +27,7 @@ export default function Home() {
 
 function BackgroundGradients() {
   return (
-    <>
+    <div className="w-screen fixed">
       <div
         className="hidden absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
         aria-hidden="true"
@@ -60,11 +52,11 @@ function BackgroundGradients() {
           }}
         />
       </div>
-    </>
+    </div>
   );
 }
 
-function Section1({ scrollY }: { scrollY: number }) {
+function Section1() {
   return (
     <section className="relative flex flex-col min-h-screen items-center justify-center overflow-hidden">
       <div
@@ -75,7 +67,7 @@ function Section1({ scrollY }: { scrollY: number }) {
         }}
       />
       <div className="absolute inset-0 z-10">
-        <Earth3DScene scrollY={scrollY} />
+        {/*    <Earth3DScene scrollY={scrollY} /> */}
       </div>
       <main className="relative z-20 flex flex-col items-center gap-8 text-center text-white p-4">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
