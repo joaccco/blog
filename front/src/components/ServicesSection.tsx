@@ -65,7 +65,7 @@ export default function ServicesSection() {
   });
 
   return (
-    <section className="relative bg-[#111] min-h-screen overflow-hidden">
+    <section className="relative bg-transparent min-h-screen overflow-hidden">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function ServicesSection() {
       <div className="relative flex justify-center">
         <div
           ref={containerRef}
-          className="sticky bg-[#1a1a1a] rounded-xl p-6 w-full max-w-5xl h-[80vh] overflow-y-scroll shadow-lg"
+          className="sticky backdrop-blur-2xl rounded-xl p-6 w-full max-w-5xl h-[80vh] overflow-y-scroll shadow-lg"
         >
           {services.map((service, index) => (
             <motion.div
@@ -93,7 +93,7 @@ export default function ServicesSection() {
                 delay: index * 0.2,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="mb-12 bg-[#222] rounded-lg p-8 shadow-md"
+              className="mb-12 bg-[#222] rounded-3xl hover:border-purple-500/10 hover:shadow-purple-500/60 transition duration-300  p-8 shadow-md"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>

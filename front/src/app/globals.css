@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +23,17 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .earth-rotation {
+    animation: earth-rotate 120s linear infinite;
   }
 }
+
+@keyframes earth-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

@@ -104,7 +104,7 @@ export default function Navbar() {
                 className="text-white focus:outline-none"
                 aria-label="Toggle menu"
               >
-                <Menu className="h-6 w-6" />
+                <p>Menu</p>
               </button>
             </div>
           </div>
