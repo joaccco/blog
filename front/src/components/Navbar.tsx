@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Code, X, User, Globe } from 'lucide-react'
+import { X, User} from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import EthLogo from '../img/ethlogo1.png'
 
 const navItems = [
   { name: 'Inicio', href: '/' },
@@ -66,8 +67,11 @@ export default function Navbar() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex h-20 items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Code className="h-8 w-8 text-white" />
-              <span className="text-white text-xl font-bold">Ethereal</span>
+            <image
+              href={EthLogo.src}
+              width="10"
+              height="10"
+            />
             </Link>
 
             <div className="flex items-center space-x-3">
@@ -106,7 +110,7 @@ export default function Navbar() {
                 size="icon"
                 className="rounded-full bg-gray-200 text-gray-900 hover:bg-gray-300"
               >
-                <Globe className="h-5 w-5" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12.87 15.07l-2.54-2.51l.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5l3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7l1.62-4.33L19.12 17z" /></svg>
               </Button>
 
               <Button

@@ -91,7 +91,7 @@ function Section1() {
               className="w-full bg-indigo-100 text-indigo-900 font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
               asChild
             >
-              <Link href="/contact">
+              <Link href="/form" className="flex">
                 Iniciar <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -101,8 +101,8 @@ function Section1() {
               className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
               asChild
             >
-              <Link href="/projects">
-                Ver Proyectos <ChevronDown className="ml-2 h-4 w-4" />
+              <Link href="/contact" className="flex">
+                Contactar <ChevronDown className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -235,7 +235,7 @@ function Section3() {
             size="lg"
             className="bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
           >
-            <Link href="/proyects">Ver Todos los Proyectos</Link>
+            <Link href="/projects">Ver Todos los Proyectos</Link>
           </Button>
         </div>
       </main>

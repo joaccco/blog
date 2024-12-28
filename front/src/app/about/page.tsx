@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Star, Rocket, Users, Target, Zap, ChevronRight, Globe } from 'lucide-react'
+import { ArrowRight, Star, Rocket, Users, Target, Zap, Globe } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useRef, useCallback } from 'react'
+import { motion, useScroll } from 'framer-motion'
 import { Card } from '../components/ui/card'
 
 interface Step {
@@ -54,14 +54,15 @@ const ProcessCard: React.FC<{
     step: Step
     y: number
     index: number
+    height: number
 }> = ({ step, y, index }) => {
     return (
         <motion.div
             style={{
-                y,
-                zIndex: steps.length - index,
+                y: y,
+                zIndex: steps.length - index
             }}
-            className="sticky top-0 pt-20"
+            className="sticky top-0 pt-20 transition-all h-[200px]"
         >
             <Card className="p-8 bg-white/80 backdrop-blur-sm border-none shadow-lg mx-4 md:mx-auto max-w-2xl">
                 <div className="flex items-start gap-4">
@@ -83,35 +84,42 @@ const ProcessCard: React.FC<{
     )
 }
 
+
 export default function ProcessTimeline() {
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
-        target: containerRef,
+        target: containerRef ?? undefined,
         offset: ["start start", "end end"]
     })
+
+    const createY = (index: number, height: number) => {
+        const y = scrollYProgress.get() * height * -1;
+        return y + (index * height)
+    }
+
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20">
             <div className="text-center mb-20">
                 <h2 className="text-4xl font-bold text-primary mb-4">Our Process</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-                    We follow a structured approach to turn your vision into reality. Here how we work together to create exceptional digital solutions.
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+                    We follow a structured approach to turn your vision into reality. Here is how we work together to create exceptional digital solutions.
                 </p>
             </div>
 
             <div ref={containerRef} className="relative min-h-[200vh]">
                 {steps.map((step, index) => {
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    const y = useTransform(
-                        scrollYProgress,
-                        [index / steps.length, (index + 0.5) / steps.length],
-                        [0, -100 * index]
-                    )
+                    const y = createY(index, 200)
 
-                    return <ProcessCard key={step.id} step={step} y={y} index={index} />
+                    return (
+                        <ProcessCard
+                            key={step.id} step={step} y={y} index={index} height={200}
+                        />
+                    )
                 })}
             </div>
         </div>
     )
 }
+
 
