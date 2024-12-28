@@ -1,4 +1,4 @@
-import TechStackShowcase from '../../components/TechStackShowCase'
+import TechStackShowcase from '../../components/TechStackShowcase'
 
 export default function TechStackPage() {
   return (

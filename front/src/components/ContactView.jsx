@@ -45,7 +45,7 @@ const ContactView = () => {
           className="text-lg text-center mb-12 text-gray-300"
           variants={childVariants}
         >
-          Have a question or want to work together? We'd love to hear from you!
+          Have a question or want to work together? Wed love to hear from you!
         </motion.p>
         <motion.div
           className="flex justify-center space-x-6 mb-12"

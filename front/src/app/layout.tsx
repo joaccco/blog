@@ -3,7 +3,8 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { genos } from "@/config/fonts";
-import Stars from "../components/Stars";
+import Stars from "../components/Stars";/* 
+import LaunchAnimation from "../components/LaunchAnimation"; */
 
 
 export default function RootLayout({
@@ -14,6 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={genos.className}>
+        {/* <div id="launch-animation">
+          <LaunchAnimation />
+        </div> */}
+
         {/* Fondo con Stars */}
         <div
           className="fixed inset-0 -z-10"

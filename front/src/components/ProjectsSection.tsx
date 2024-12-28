@@ -50,7 +50,7 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
