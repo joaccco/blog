@@ -9,6 +9,7 @@ import EthLogo from '../img/ethlogo1.png'
 
 const navItems = [
   { name: 'Inicio', href: '/' },
+  { name: 'Novedades', href: '/posts' },
   { name: 'Sobre Nosotros', href: '/about' },
   { name: 'Nuestro Trabajo', href: '/projects' },
   { name: 'Contacto', href: '/contact' }
@@ -89,6 +90,7 @@ export default function Navbar() {
                     <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                       <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                         <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Perfil</a>
+                        <a href="/admin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Panel de admin</a>
                         <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Configuración</a>
                         <a href="#" onClick={() => setIsAuthenticated(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Cerrar Sesión</a>
                       </div>
