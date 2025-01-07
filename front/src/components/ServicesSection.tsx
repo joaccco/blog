@@ -96,7 +96,7 @@ export default function ServicesSection() {
                 delay: index * 0.2,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="mb-12 bg-[#222] rounded-3xl hover:border-purple-500/10 hover:shadow-purple-500/60 transition duration-300  p-16 shadow-md"
+              className="mb-12 bg-gray-900 rounded-3xl hover:border-purple-500/10 hover:shadow-purple-500/60 transition duration-300  p-16 shadow-md"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>

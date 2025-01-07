@@ -66,7 +66,7 @@ export default function ProjectsPage() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-transparent text-white p-8">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

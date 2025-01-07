@@ -61,7 +61,7 @@ function BackgroundGradients() {
   );
 }
 
-function Section1() {
+export function Section1() {
   return (
     <section className="relative flex flex-col min-h-screen items-center justify-center overflow-hidden bg-transparent text-white">
       {/* Space Illustration */}
@@ -85,49 +85,42 @@ function Section1() {
 
           {/* Subheading */}
           <p className="text-lg font-regular text-gray-300 mb-12 max-w-3xl">
-            <span
-              className={`${poppins.className} block`}
-            >
+            <span className={`${poppins.className} block`}>
               Creamos experiencias web innovadoras
               y aplicaciones personalizadas que transforman tu visión en realidad.
             </span>
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16 w-full max-w-3xl">
-            <div className="grid grid-cols-2 max-w-full">
-              <Button
-                size="lg"
-                className="col-span-1 w-full bg-indigo-100 text-indigo-900 font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
-                asChild
-              >
-                <Link href="/form" className="flex justify-center items-center">
-                  Iniciar <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="col-span-1 w-full bg-indigo-600 text-white p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
-                asChild
-              >
-                <Link href="/contact" className="flex justify-center items-center">
-                  Contactar <ChevronDown className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-
-              <div className="col-span-2 mt-4">
-                <Button
-                  size="lg"
-                  className="w-full text-white font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
-                  asChild
-                >
-                  <Link href="/hiring" className="flex justify-center items-center">
-                    ¿Como es el Proceso de Contrato?
-                  </Link>
-                </Button>
-              </div>
-            </div>
+          <div className="flex flex-col items-center gap-4 mb-16 w-full max-w-md">
+            <Button
+              size="lg"
+              className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-indigo-500/50 transition duration-300 ease-in-out transform hover:-translate-y-1"
+              asChild
+            >
+              <Link href="/form" className="flex justify-center items-center">
+                Iniciar Proyecto <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full bg-transparent text-white font-bold py-4 px-8 rounded-full shadow-lg border-2 border-indigo-500 hover:bg-indigo-500/10 hover:shadow-indigo-500/30 transition duration-300 ease-in-out transform hover:-translate-y-1"
+              asChild
+            >
+              <Link href="/contact" className="flex justify-center items-center">
+                Contactar <ChevronDown className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              className="w-full bg-white/10 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-white/20 hover:shadow-purple-500/20 transition duration-300 ease-in-out transform hover:-translate-y-1"
+              asChild
+            >
+              <Link href="/process" className="flex justify-center items-center">
+                ¿Cómo es el Proceso de Contrato?
+              </Link>
+            </Button>
           </div>
 
           {/* Stats Grid */}
@@ -146,24 +139,6 @@ function Section1() {
               </div>
             ))}
           </div>
-
-          {/* Clients Grid */}
-          <div className="mt-16 w-full">
-            <p className="text-sm text-gray-400 mb-6">EMPRESAS QUE CONFÍAN EN NOSOTROS</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-32 h-12 bg-white/5 rounded-lg flex items-center justify-center">
-                  <Image
-                    src={`/placeholder.svg?height=30&width=80&text=Client+${i}`}
-                    alt={`Client ${i}`}
-                    width={80}
-                    height={30}
-                    className="opacity-50 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
@@ -171,9 +146,6 @@ function Section1() {
     </section>
   )
 }
-
-
-
 
 function Section3() {
   const projects = [
@@ -223,7 +195,7 @@ function Section3() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 overflow-hidden"
+              className="group bg-gray-900 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 overflow-hidden"
             >
               <div className="relative overflow-hidden rounded-xl mb-6">
                 <Image
@@ -292,7 +264,7 @@ function Section4() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
+          <div className="bg-gray-900 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Mail className="w-12 h-12 text-blue-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Contáctanos</h3>
             <p className="text-gray-300 mb-4">
@@ -309,7 +281,7 @@ function Section4() {
             </Link>
           </div>
 
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
+          <div className="bg-gray-900 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Phone className="w-12 h-12 text-purple-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Hablanos al Whatsapp</h3>
             <p className="text-gray-300 mb-4">
@@ -326,7 +298,7 @@ function Section4() {
             </Link>
           </div>
 
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
+          <div className="bg-gray-900 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Calendar className="w-12 h-12 text-pink-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Agenda una Cita</h3>
             <p className="text-gray-300 mb-4">
