@@ -8,6 +8,10 @@ import ServicesSection from "../components/ServicesSection";
 import { Mail, Phone, Calendar } from "lucide-react";
 import EarthAnimation from '../components/EarthAnimation'
 import MoonAnimation from '../components/MoonAnimation'
+import { Poppins, Genos } from 'next/font/google';
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
+const genos = Genos({ subsets: ['latin'], weight: ['400'] });
 
 export default function Home() {
 
@@ -80,39 +84,58 @@ function Section1() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl">
-            Creamos experiencias web innovadoras y aplicaciones personalizadas que transforman tu visión en realidad.
+          <p className="text-lg font-regular text-gray-300 mb-12 max-w-3xl">
+            <span
+              className={`${poppins.className} block`}
+            >
+              Creamos experiencias web innovadoras
+              y aplicaciones personalizadas que transforman tu visión en realidad.
+            </span>
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button
-              size="lg"
-              className="w-full bg-indigo-100 text-indigo-900 font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
-              asChild
-            >
-              <Link href="/form" className="flex">
-                Iniciar <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
-              asChild
-            >
-              <Link href="/contact" className="flex">
-                Contactar <ChevronDown className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 mb-16 w-full max-w-3xl">
+            <div className="grid grid-cols-2 max-w-full">
+              <Button
+                size="lg"
+                className="col-span-1 w-full bg-indigo-100 text-indigo-900 font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
+                asChild
+              >
+                <Link href="/form" className="flex justify-center items-center">
+                  Iniciar <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="col-span-1 w-full bg-indigo-600 text-white p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
+                asChild
+              >
+                <Link href="/contact" className="flex justify-center items-center">
+                  Contactar <ChevronDown className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <div className="col-span-2 mt-4">
+                <Button
+                  size="lg"
+                  className="w-full text-white font-bold p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300"
+                  asChild
+                >
+                  <Link href="/hiring" className="flex justify-center items-center">
+                    ¿Como es el Proceso de Contrato?
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
 
           {/* Stats Grid */}
           <div className="w-full max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
             {[
-              { number: "50+", label: "Proyectos Completados" },
+              { number: "10+", label: "Proyectos Completados" },
               { number: "98%", label: "Clientes Satisfechos" },
-              { number: "5+", label: "Años de Experiencia" },
+              { number: "2+", label: "Años de Experiencia" },
               { number: "24/7", label: "Soporte Técnico" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
@@ -191,14 +214,16 @@ function Section3() {
           Proyectos Que Inspiran
         </h2>
         <p className="text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
-          Descubre cómo transformamos ideas en soluciones digitales innovadoras
-          que impulsan el éxito de nuestros clientes.
+          <span className={`${poppins.className} block`}>
+            Descubre cómo transformamos ideas en soluciones digitales innovadoras
+            que impulsan el éxito de nuestros clientes.
+          </span>
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 overflow-hidden"
+              className="group bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 overflow-hidden"
             >
               <div className="relative overflow-hidden rounded-xl mb-6">
                 <Image
@@ -214,7 +239,9 @@ function Section3() {
                 {project.title}
               </h3>
               <p className="text-gray-400 mb-4 group-hover:text-white transition duration-300">
-                {project.description}
+                <span className={`${poppins.className} block`}>
+                  {project.description}
+                </span>
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, tagIndex) => (
@@ -265,55 +292,64 @@ function Section4() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Mail className="w-12 h-12 text-blue-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Contáctanos</h3>
             <p className="text-gray-300 mb-4">
               Cuéntanos sobre tu proyecto y te responderemos en 24 horas.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
-            >
-              <Link className="flex" href="/contact">
+            <Link className="flex" href="/contact">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 transition duration-300  "
+              >
                 Contactar <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
 
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Phone className="w-12 h-12 text-purple-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Hablanos al Whatsapp</h3>
             <p className="text-gray-300 mb-4">
               Habla directamente con uno de nuestros expertos en desarrollo.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
-            >
-              <a className="flex" href="tel:+123456789">
+            <Link className="flex" href="tel:+123456789">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 transition duration-300  "
+              >
                 Ir a Whatsapp<ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+              </Button>
+            </Link>
           </div>
 
-          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/20 transition duration-300 ">
+          <div className="bg-[#222] p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-500/60 transition duration-300 ">
             <Calendar className="w-12 h-12 text-pink-400 mb-4 mx-auto" />
             <h3 className="text-2xl font-semibold mb-2">Agenda una Cita</h3>
             <p className="text-gray-300 mb-4">
               Reserva una consulta gratuita de 30 minutos con nuestro equipo.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 hover:shadow-purple-300/20 transition duration-300  "
-            >
-              <Link className="flex " href="/schedule">
+            <Link className="flex " href="https://cal.com/ethdevs">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 transition duration-300  "
+              >
                 Agendar Cita <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+              </Button>
+            </Link>
+            <Link className="flex " href="/schedule">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-indigo-600 p-6 rounded-3xl shadow-lg border border-gray-700 hover:border-purple-500/50 transition duration-300  "
+              >
+                Schedule<ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
 

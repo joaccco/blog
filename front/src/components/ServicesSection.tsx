@@ -3,6 +3,9 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Poppins, Genos } from 'next/font/google';
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 const services = [
   {
@@ -80,7 +83,7 @@ export default function ServicesSection() {
       <div className="relative flex justify-center">
         <div
           ref={containerRef}
-          className="sticky backdrop-blur-2xl rounded-xl p-6 w-full max-w-5xl h-[80vh] overflow-y-scroll shadow-lg"
+          className="sticky p-6 w-full max-w-5xl h-[80vh] overflow-y-scroll shadow-lg"
         >
           {services.map((service, index) => (
             <motion.div
@@ -93,24 +96,28 @@ export default function ServicesSection() {
                 delay: index * 0.2,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="mb-12 bg-[#222] rounded-3xl hover:border-purple-500/10 hover:shadow-purple-500/60 transition duration-300  p-8 shadow-md"
+              className="mb-12 bg-[#222] rounded-3xl hover:border-purple-500/10 hover:shadow-purple-500/60 transition duration-300  p-16 shadow-md"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-3xl font-bold text-white mb-4">
                     {service.name}
                   </h3>
-                  <p className="text-gray-400 text-lg mb-6">{service.description}</p>
+                  <p className="text-gray-400 text-lg mb-6">  <span
+                    className={`${poppins.className} block`}
+                  >{service.description}</span></p>
                   <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="text-gray-500 flex items-center"
-                      >
-                        <span className="w-2 h-2 bg-gray-500 rounded-full mr-3" />
-                        {feature}
-                      </li>
-                    ))}
+                    <span className={`${poppins.className} font-extralight`}>
+                      {service.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="text-gray-500 flex items-center"
+                        >
+                          <span className="w-2 h-2 bg-gray-500 rounded-full mr-3" />
+                          {feature}
+                        </li>
+                      ))}
+                    </span>
                   </ul>
                 </div>
                 <div className="hidden md:block">
