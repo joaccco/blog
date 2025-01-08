@@ -15,9 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={genos.className}>
-        {/* <div id="launch-animation">
-          <LaunchAnimation />
-        </div> */}
 
         {/* Fondo con Stars */}
         <div
