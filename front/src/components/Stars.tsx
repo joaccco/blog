@@ -35,8 +35,8 @@ const Stars: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const numStars = 200;
-    const numComets = 10;
+    const numStars = 100; 
+    const numComets = 5; 
     const stars: Star[] = [];
     const comets: Comet[] = [];
 
@@ -48,7 +48,7 @@ const Stars: React.FC = () => {
         id: i,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
+        size: Math.random() * 1.5 + 0.3, 
         color: starColors[Math.floor(Math.random() * starColors.length)],
         isStatic: true,
       });
@@ -59,8 +59,8 @@ const Stars: React.FC = () => {
         id: i,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1 + 1,
-        speed: Math.random() * 0.5 + 0.2,
+        size: Math.random() * 0.8 + 0.8, 
+        speed: Math.random() * 0.3 + 0.1, 
         color: cometColors[Math.floor(Math.random() * cometColors.length)],
         trail: [],
       });
@@ -107,8 +107,8 @@ const Stars: React.FC = () => {
 
     if (previousTimeRef.current !== undefined) {
       const deltaTime = time - previousTimeRef.current;
-      const scrollMultiplier = isScrollingRef.current ? 5 : 1;
-      const trailLength = isScrollingRef.current ? 12 : 24;
+      const scrollMultiplier = isScrollingRef.current ? 3 : 1; 
+      const trailLength = isScrollingRef.current ? 8 : 16; 
 
       // Draw static stars
       starsRef.current.forEach((star) => {
@@ -122,9 +122,9 @@ const Stars: React.FC = () => {
       cometsRef.current.forEach((comet) => {
         let newY = comet.y;
         if (scrollDirectionRef.current === 'down' || (!isScrollingRef.current && scrollDirectionRef.current === null)) {
-          newY += comet.speed * deltaTime * 0.05 * scrollMultiplier;
+          newY += comet.speed * deltaTime * 0.03 * scrollMultiplier; 
         } else if (scrollDirectionRef.current === 'up') {
-          newY -= comet.speed * deltaTime * 0.05 * scrollMultiplier;
+          newY -= comet.speed * deltaTime * 0.03 * scrollMultiplier; 
         }
 
         if (newY > canvas.height) {
@@ -147,8 +147,8 @@ const Stars: React.FC = () => {
 
         comet.trail.forEach((point, index) => {
           ctx.beginPath();
-          ctx.arc(point.x, point.y, comet.size * 0.8, 0, Math.PI * 2);
-          ctx.fillStyle = `${comet.color}${Math.floor(((index + 1) / comet.trail.length) * 255).toString(16).padStart(2, '0')}`;
+          ctx.arc(point.x, point.y, comet.size * 0.7, 0, Math.PI * 2); 
+          ctx.fillStyle = `${comet.color}${Math.floor(((index + 1) / comet.trail.length) * 200).toString(16).padStart(42, '0')}`; 
           ctx.fill();
         });
 
